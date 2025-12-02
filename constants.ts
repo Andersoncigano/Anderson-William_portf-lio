@@ -124,8 +124,9 @@ export const PORTFOLIO_ITEMS: ProjectItem[] = [
   },
   { 
     id: 3, 
-    title: "Motion Graphics Reel", 
-    category: "Video", 
-    imageUrl: "https://picsum.photos/600/400?random=3" 
+    title: "Campanha Dom Pagamentos", 
+    category: "Campanha", 
+    imageUrl: "https://i.ibb.co/1fF89kFG/imagem-2025-11-27-115752377.png",
+    link: "https://www.behance.net/gallery/195141735/Dom-Pagamentos-Campanha"
   }
 ];
