@@ -26,13 +26,13 @@ const Contact: React.FC = () => {
 
         <div className="flex justify-center gap-6 md:gap-10">
           <SocialLink 
-            href="#" 
+            href="https://www.linkedin.com/in/anderson-w-28a010a8/" 
             icon={<Linkedin size={24} />} 
             label="LinkedIn" 
             color="hover:text-[#0077b5]"
           />
           <SocialLink 
-            href="#" 
+            href="https://api.whatsapp.com/send?phone=5551993171197&text=Anderson" 
             icon={<Phone size={24} />} 
             label="WhatsApp" 
             color="hover:text-[#25D366]"
