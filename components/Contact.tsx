@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Mail, Linkedin, Github, Phone, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
@@ -56,7 +55,7 @@ const Contact: React.FC = () => {
             color="hover:text-black"
           />
           <SocialLink 
-            href="https://behance.net" 
+            href="https://www.behance.net/andersonnh" 
             icon={<span className="font-bold text-lg">Be</span>} 
             label="Behance" 
             color="hover:text-[#1769ff]"
