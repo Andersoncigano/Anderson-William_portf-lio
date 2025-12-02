@@ -23,9 +23,9 @@ const Education: React.FC = () => {
           
           {/* Seção 1: Timeline Acadêmica (Horizontal Centralizada) */}
           <div className="relative">
-            {/* Título Acadêmico com Animação */}
+            {/* Título Acadêmico com Animação Intensificada */}
             <div className="flex justify-center mb-12">
-              <div className="inline-flex items-center gap-3 text-white/90 group cursor-default px-6 py-2 rounded-full transition-all duration-500 hover:bg-white/5 border border-transparent hover:border-white/10">
+              <div className="inline-flex items-center gap-3 text-white/90 group cursor-default px-6 py-2 rounded-full transition-all duration-500 hover:bg-white/10 border border-transparent hover:border-white/20 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                 <GraduationCap className="w-5 h-5 transition-transform duration-500 ease-out group-hover:-rotate-12 group-hover:scale-110 group-hover:text-white" />
                 <h4 className="relative text-lg font-bold uppercase tracking-widest transition-all duration-500 ease-out group-hover:tracking-[0.3em] group-hover:text-white">
                   Acadêmico
@@ -72,9 +72,9 @@ const Education: React.FC = () => {
 
           {/* Seção 2: Grid de Cursos (Centralizado) */}
           <div>
-             {/* Título Especializações com Animação */}
+             {/* Título Especializações com Animação Intensificada */}
              <div className="flex justify-center mb-12">
-                <div className="inline-flex items-center gap-3 text-white/90 group cursor-default px-6 py-2 rounded-full transition-all duration-500 hover:bg-white/5 border border-transparent hover:border-white/10">
+                <div className="inline-flex items-center gap-3 text-white/90 group cursor-default px-6 py-2 rounded-full transition-all duration-500 hover:bg-white/10 border border-transparent hover:border-white/20 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                     <Award className="w-5 h-5 transition-transform duration-500 ease-out group-hover:rotate-12 group-hover:scale-110 group-hover:text-white" />
                     <h4 className="relative text-lg font-bold uppercase tracking-widest transition-all duration-500 ease-out group-hover:tracking-[0.3em] group-hover:text-white">
                       Especializações

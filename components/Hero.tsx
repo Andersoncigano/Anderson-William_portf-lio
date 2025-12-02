@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../constants';
 
 // --- ÁREA DE EDIÇÃO DA FOTO ---
@@ -16,6 +16,20 @@ const Hero: React.FC = () => {
   const initialImage = USER_IMAGE_URL || "/profile.png";
 
   const [imgSrc, setImgSrc] = useState(initialImage);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    // Adiciona listener com passive true para melhor performance de scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleImageError = () => {
     if (imgSrc !== fallbackImage) {
@@ -26,7 +40,11 @@ const Hero: React.FC = () => {
   return (
     <section className="relative w-full h-screen min-h-[600px] flex flex-col md:flex-row bg-gray-50 overflow-hidden">
       {/* Image Column (Left on Desktop, Top on Mobile) */}
-      <div className="w-full md:w-1/2 h-1/2 md:h-full relative bg-gray-50 flex flex-col justify-end items-center">
+      {/* Adicionado style transform para efeito Parallax (move a 25% da velocidade do scroll) */}
+      <div 
+        className="w-full md:w-1/2 h-1/2 md:h-full relative bg-gray-50 flex flex-col justify-end items-center will-change-transform"
+        style={{ transform: `translateY(${scrollY * 0.25}px)` }}
+      >
         <img 
           src={imgSrc} 
           onError={handleImageError}
@@ -38,12 +56,14 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content Column (Right on Desktop, Bottom on Mobile) */}
-      {/* Alteração: Removido padding esquerdo no desktop (md:pl-0 lg:pl-0) para puxar o texto mais para a esquerda */}
       <div className="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-start p-8 md:pl-0 lg:pl-0 bg-gray-50 relative">
         
         {/* Main Content Container - Aligned Left within the Right Column */}
-        {/* Adicionado md:-ml-4 para forçar ainda mais para a esquerda se necessário */}
-        <div className="w-full max-w-4xl relative text-left z-10 md:-ml-4 lg:-ml-8">
+        {/* Adicionado style transform para efeito Parallax diferente (move a 10% da velocidade) */}
+        <div 
+          className="w-full max-w-4xl relative text-left z-10 md:-ml-4 lg:-ml-8 will-change-transform"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        >
           
           {/* Name - Font Size Reduced Slightly */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl text-brandBlack font-black leading-[0.85] mb-8 -ml-1 md:-ml-2">
@@ -61,11 +81,14 @@ const Hero: React.FC = () => {
             e Inteligência Artificial
           </h2>
 
-          {/* Objective Paragraph Removed as requested */}
         </div>
 
         {/* Minimalist Background decoration elements */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-white rounded-full opacity-60 blur-3xl -z-0"></div>
+        {/* Elemento decorativo movendo em direção oposta para maior profundidade */}
+        <div 
+          className="absolute top-10 right-10 w-32 h-32 bg-white rounded-full opacity-60 blur-3xl -z-0 will-change-transform"
+          style={{ transform: `translateY(${-scrollY * 0.15}px)` }}
+        ></div>
       </div>
     </section>
   );
