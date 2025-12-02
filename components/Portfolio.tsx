@@ -11,7 +11,7 @@ const Portfolio: React.FC = () => {
             Trabalhos
           </h3>
           <a 
-            href="https://www.behance.net/" 
+            href="https://www.behance.net/andersonnh" 
             target="_blank" 
             rel="noreferrer"
             className="hidden md:flex items-center gap-1.5 text-[9px] uppercase tracking-widest hover:text-gray-400 transition-colors"
@@ -65,7 +65,7 @@ const Portfolio: React.FC = () => {
         
         <div className="mt-10 text-center md:hidden">
            <a 
-            href="https://www.behance.net/" 
+            href="https://www.behance.net/andersonnh" 
             target="_blank" 
             rel="noreferrer"
             className="inline-flex items-center gap-2 text-[9px] uppercase tracking-widest border border-white px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
