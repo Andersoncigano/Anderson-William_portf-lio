@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
           <div className="w-24 md:w-32 h-2 bg-brandBlack mb-8"></div>
 
           {/* Role Title */}
-          <h2 className="text-sm md:text-xl font-bold text-gray-500 uppercase tracking-[0.2em] md:tracking-[0.3em] mb-6 pl-1 leading-relaxed">
+          <h2 className="text-sm md:text-xl font-bold text-gray-500 uppercase tracking-[0.2em] md:tracking-[0.3em] mb-8 pl-1 leading-relaxed">
             Diretor de Arte <br className="hidden md:block" />
             e Inteligência Artificial
           </h2>

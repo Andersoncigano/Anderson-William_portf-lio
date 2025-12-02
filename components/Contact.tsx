@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { Mail, Linkedin, Github, Phone } from 'lucide-react';
+import { Mail, Linkedin, Github, Phone, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
 
 const Contact: React.FC = () => {
   return (
     <section id="section-contact" className="py-20 px-6 bg-brandWhite text-brandBlack scroll-mt-28">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
         <h3 className="text-xl font-bold uppercase tracking-tighter mb-10 bg-black text-white px-5 py-1.5 inline-block border-2 border-black transition-all duration-300 hover:bg-white hover:text-black hover:tracking-widest cursor-default">
           Vamos Conversar?
         </h3>
@@ -18,10 +18,22 @@ const Contact: React.FC = () => {
 
         <a 
           href={`mailto:${PERSONAL_INFO.email}`}
-          className="inline-flex items-center gap-2 text-base md:text-lg font-bold transition-all duration-300 mb-14 hover:tracking-widest"
+          className="inline-flex items-center gap-2 text-base md:text-lg font-bold transition-all duration-300 mb-6 hover:tracking-widest"
         >
           <Mail className="w-4 h-4 md:w-5 md:h-5" />
           {PERSONAL_INFO.email}
+        </a>
+
+        {/* Botão de Download CV - Discreto */}
+        <a 
+          href={PERSONAL_INFO.resume}
+          target="_blank" 
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-gray-500 border border-gray-200 px-4 py-1.5 rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 mb-14"
+          aria-label="Download Curriculum Vitae"
+        >
+          Download CV
+          <Download className="w-3 h-3" />
         </a>
 
         <div className="flex justify-center gap-6 md:gap-10">

@@ -5,6 +5,7 @@ export const PERSONAL_INFO = {
   role: "Diretor de Arte e Inteligência Artificial",
   location: "Novo Hamburgo - RS",
   email: "slavedreamers@gmail.com",
+  resume: "https://drive.google.com/file/d/1Qa69QbNJHTF1jIKIF1dRRqLk2bO0WIg6/view?usp=sharing",
   objective: "Busco oportunidades de trabalho nas áreas de design gráfico, social media e motion design, com foco no desenvolvimento de habilidades técnicas e pessoais, especialmente na criação.",
 };
 
