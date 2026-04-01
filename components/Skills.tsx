@@ -1,12 +1,12 @@
 import React from 'react';
 import { SKILLS } from '../constants';
 import { PenTool, Video, Bot } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const Skills: React.FC = () => {
 
   const getSkillIcon = (title: string) => {
-    // Classes para transição suave de cor junto com o grupo
-    const iconClass = "w-5 h-5 mr-3 transition-colors duration-500 group-hover:text-white text-brandBlack";
+    const iconClass = "w-5 h-5 mr-3 transition-colors duration-500 group-hover:text-brand-white text-brand-black";
     
     if (title.toLowerCase().includes("design")) return <PenTool className={iconClass} />;
     if (title.toLowerCase().includes("vídeo")) return <Video className={iconClass} />;
@@ -16,37 +16,45 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="section-skills" className="py-20 px-6 bg-brandWhite text-brandBlack scroll-mt-28">
+    <section id="section-skills" className="py-24 px-6 bg-brand-white text-brand-black scroll-mt-28 transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
-        <h3 className="text-xl font-bold uppercase tracking-tighter mb-14 bg-black text-white px-5 py-1.5 inline-block border-2 border-black transition-all duration-300 hover:bg-white hover:text-black hover:tracking-widest cursor-default">
+        <motion.h3 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="text-xl font-display font-bold uppercase tracking-tighter mb-14 bg-brand-black text-brand-white px-5 py-1.5 inline-block border-2 border-brand-black transition-all duration-300 hover:bg-brand-white hover:text-brand-black hover:tracking-widest cursor-default"
+        >
           Conhecimentos
-        </h3>
+        </motion.h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {SKILLS.map((cat, index) => (
-            <div 
+            <motion.div 
               key={index} 
-              className="group flex flex-col h-full p-5 -mx-5 rounded-2xl transition-all duration-500 hover:bg-black hover:shadow-2xl cursor-default"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group flex flex-col h-full p-8 -mx-8 rounded-2xl transition-all duration-500 hover:bg-brand-black hover:shadow-2xl cursor-default"
             >
-              {/* Container Título + Ícone */}
-              <div className="flex items-center mb-5 px-3 py-1.5 self-start rounded-md transition-all duration-500 group-hover:bg-white/10">
+              <div className="flex items-center mb-6 px-3 py-1.5 self-start rounded-md transition-all duration-500 group-hover:bg-white/10">
                 {getSkillIcon(cat.title)}
-                <h4 className="text-sm font-extrabold uppercase tracking-wide transition-colors duration-500 group-hover:text-white">
+                <h4 className="text-sm font-display font-extrabold uppercase tracking-wide transition-colors duration-500 group-hover:text-brand-white">
                   {cat.title}
                 </h4>
               </div>
 
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {cat.skills.map((skill, i) => (
                   <li 
                     key={i} 
-                    className="text-xs border-b border-gray-300 pb-1.5 last:border-0 transition-colors duration-500 group-hover:text-gray-300 group-hover:border-gray-700"
+                    className="text-xs border-b border-gray-300 pb-2 last:border-0 transition-colors duration-500 group-hover:text-gray-300 group-hover:border-gray-800"
                   >
                     {skill}
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

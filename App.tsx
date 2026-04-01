@@ -7,10 +7,12 @@ import Skills from './components/Skills';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 
 const App: React.FC = () => {
   return (
-    <div className="w-full overflow-x-hidden relative">
+    <div className="w-full overflow-x-hidden relative bg-brand-white text-brand-black transition-colors duration-300">
+      <CustomCursor />
       <Header />
       <Hero />
       <Experience />

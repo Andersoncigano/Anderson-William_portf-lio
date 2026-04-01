@@ -66,6 +66,7 @@ export const COURSES: CourseItem[] = [
   { name: "Ciêntista do Marketing", provider: "v4 Company", year: "2023" },
   { name: "Photoshop Avançado", provider: "Lucas Rosa", year: "2022" },
   { name: "Design e Percepção Visual", provider: "Ruan Brás", year: "2025" },
+  { name: "Java - Programação Orientada a objetos", provider: "IFSP (Instituto Federal de São Paulo)", year: "2026" },
   { name: "ID CLASS - Curso de Identidade Visual", year: "2019" }
 ];
 

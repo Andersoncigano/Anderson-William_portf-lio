@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 const NAV_ITEMS = [
   { label: 'Experiências', href: '#section-experience' },
@@ -25,7 +26,7 @@ const NameReveal = () => {
       onClick={handleLogoClick}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
-      className="group relative flex items-center font-black text-lg md:text-xl tracking-tighter select-none cursor-pointer outline-none text-black"
+      className="group relative flex items-center font-display font-black text-lg md:text-xl tracking-tighter select-none cursor-pointer outline-none text-brand-black"
       aria-label="Anderson William - Voltar ao topo"
     >
       {/* Container visual para feedback de hover */}
@@ -100,45 +101,57 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-4">
-          {NAV_ITEMS.map((item) => (
-            <a
+          {NAV_ITEMS.map((item, index) => (
+            <motion.a
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="text-[9px] uppercase font-bold tracking-widest text-gray-600 px-3 py-2 rounded-md transition-all duration-300 hover:bg-black hover:text-white cursor-pointer"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+              className="text-[9px] uppercase font-bold tracking-widest text-gray-600 px-3 py-2 rounded-md transition-all duration-300 hover:bg-brand-black hover:text-brand-white cursor-pointer"
             >
               {item.label}
-            </a>
+            </motion.a>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 z-50 relative"
+          className="md:hidden p-2 z-50 relative text-brand-black"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Mobile Navigation Overlay */}
-        <div 
-          className={`fixed inset-0 bg-white z-40 flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
-            isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
-          }`}
-        >
-          <nav className="flex flex-col gap-6 text-center">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-lg uppercase font-black tracking-widest hover:text-gray-500 transition-colors cursor-pointer"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-0 bg-brand-white z-40 flex flex-col items-center justify-center"
+            >
+              <nav className="flex flex-col gap-6 text-center">
+                {NAV_ITEMS.map((item, index) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                    className="text-2xl uppercase font-display font-black tracking-widest hover:text-gray-500 transition-colors cursor-pointer"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

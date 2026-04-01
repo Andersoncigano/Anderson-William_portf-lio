@@ -1,78 +1,90 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { PORTFOLIO_ITEMS } from '../constants';
+import { motion } from 'motion/react';
 
 const Portfolio: React.FC = () => {
   return (
-    <section id="section-portfolio" className="py-20 px-6 bg-brandBlack text-brandWhite scroll-mt-28">
+    <section id="section-portfolio" className="py-24 px-6 bg-brand-black text-brand-white scroll-mt-28">
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-end mb-14 border-b border-white/20 pb-5">
-          <h3 className="text-xl font-bold uppercase tracking-tighter">
-            Trabalhos
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-between items-end mb-14 border-b border-white/20 pb-5"
+        >
+          <h3 className="text-2xl font-display font-bold uppercase tracking-tighter">
+            Trabalhos Selecionados
           </h3>
-          <a 
+          <motion.a 
             href="https://www.behance.net/andersonnh" 
             target="_blank" 
             rel="noreferrer"
-            className="hidden md:flex items-center gap-1.5 text-[9px] uppercase tracking-widest hover:text-gray-400 transition-colors"
+            whileHover={{ x: 5 }}
+            className="hidden md:flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest text-gray-400 hover:text-white transition-colors"
           >
-            Ver Behance <ExternalLink size={12} />
-          </a>
-        </div>
+            Ver Behance <ExternalLink size={14} />
+          </motion.a>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {PORTFOLIO_ITEMS.map((item) => {
-            const Content = () => (
-              <>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PORTFOLIO_ITEMS.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <motion.a 
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative aspect-[4/5] overflow-hidden bg-gray-900 block rounded-lg"
+                whileHover={{ y: -10 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
                 <img 
                   src={item.imageUrl} 
                   alt={item.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                  <span className="text-[8px] text-gray-300 uppercase tracking-widest mb-1.5 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                  <motion.span 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    className="text-[10px] text-gray-400 uppercase font-bold tracking-[0.2em] mb-2"
+                  >
                     {item.category}
-                  </span>
-                  <h4 className="text-sm font-bold uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+                  </motion.span>
+                  <motion.h4 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    className="text-lg font-display font-bold uppercase leading-tight"
+                  >
                     {item.title}
-                  </h4>
+                  </motion.h4>
                 </div>
-              </>
-            );
-
-            // Renderiza como Link (a) se houver link, ou div se não houver
-            if (item.link) {
-              return (
-                <a 
-                  key={item.id} 
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer block"
-                >
-                  <Content />
-                </a>
-              );
-            }
-
-            return (
-              <div key={item.id} className="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer">
-                <Content />
-              </div>
-            );
-          })}
+              </motion.a>
+            </motion.div>
+          ))}
         </div>
         
-        <div className="mt-10 text-center md:hidden">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center md:hidden"
+        >
            <a 
             href="https://www.behance.net/andersonnh" 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-[9px] uppercase tracking-widest border border-white px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
+            className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest border border-white/20 px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all"
           >
-            Ver Behance Completo <ExternalLink size={12} />
+            Ver Behance Completo <ExternalLink size={14} />
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
