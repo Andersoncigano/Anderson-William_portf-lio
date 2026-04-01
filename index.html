@@ -62,7 +62,8 @@
       }
     }
     </script>
-  </head>
+  <link rel="stylesheet" href="/index.css">
+</head>
   <body>
     <div id="root">
       <div id="loading-indicator">
@@ -73,5 +74,6 @@
     </div>
     <!-- ESTA LINHA ABAIXO É A CORREÇÃO CRÍTICA PARA O VERCEL -->
     <script type="module" src="./index.tsx"></script>
-  </body>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>

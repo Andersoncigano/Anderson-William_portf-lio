@@ -65,7 +65,7 @@ export const COURSES: CourseItem[] = [
   { name: "Nexus - IA aplicada ao design", year: "2025" },
   { name: "Ciêntista do Marketing", provider: "v4 Company", year: "2023" },
   { name: "Photoshop Avançado", provider: "Lucas Rosa", year: "2022" },
-  { name: "Fundamentos do Design Visual", year: "2020" },
+  { name: "Design e Percepção Visual", provider: "Ruan Brás", year: "2025" },
   { name: "ID CLASS - Curso de Identidade Visual", year: "2019" }
 ];
 
